@@ -1,13 +1,14 @@
+import { useEffect, useState, startTransition } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ActivityIndicator, View, StyleSheet } from "react-native";
 import AllPlaces from "./screens/AllPlaces";
 import AddPlace from "./screens/AddPlace";
 import PlaceDetails from "./screens/PlaceDetails";
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import Map from "./screens/Map";
-import { useEffect, useState } from "react";
 import { init } from "./util/database";
 import * as SplashScreen from "expo-splash-screen";
 
@@ -21,7 +22,9 @@ export default function App() {
       try {
         await SplashScreen.preventAutoHideAsync();
         await init();
-        setDbInitialized(true);
+        startTransition(() => {
+          setDbInitialized(true);
+        });
         await SplashScreen.hideAsync();
       } catch (error) {
         console.error(error);
@@ -33,7 +36,11 @@ export default function App() {
   }, []);
 
   if (!dbInitialized) {
-    return SplashScreen.preventAutoHideAsync();
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={Colors.primary500} />
+      </View>
+    );
   }
 
   return (
@@ -86,3 +93,12 @@ export default function App() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.gray700,
+  },
+});

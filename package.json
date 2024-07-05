@@ -1,5 +1,5 @@
 {
-  "name": "12-favorite-places-app",
+  "name": "place-mate",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
   "scripts": {

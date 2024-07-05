@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "12-favorite-places-app",
-    "slug": "12-favorite-places-app",
+    "name": "place-mate",
+    "slug": "place-mate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
