@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "place-mate",
-    "slug": "place-mate",
+    "name": "Place Mate",
+    "slug": "Place Mate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "constants/colors.js"
     },
     "ios": {
       "supportsTablet": true
