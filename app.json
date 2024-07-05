@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Place Mate",
-    "slug": "Place Mate",
+    "slug": "PlaceMate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "constants/colors.js"
+      "backgroundColor": "#ffffff"
     },
     "ios": {
       "buildNumber": "1.0.0",
@@ -20,7 +20,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["android.permission.RECORD_AUDIO"],
+      "package": "com.justrunis.PlaceMate"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +34,11 @@
           "cameraPermission": "The app needs access to your camera in order to take photos of your favorite places."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a5ab9248-a304-43d0-87bc-1ad2d526c289"
+      }
+    }
   }
 }
