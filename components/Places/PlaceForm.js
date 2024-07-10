@@ -1,5 +1,12 @@
 import { useCallback, useState } from "react";
-import { View, Text, ScrollView, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  StyleSheet,
+  Alert,
+} from "react-native";
 import { Colors } from "../../constants/colors";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
@@ -25,6 +32,31 @@ export default function PlaceForm({ onCreatePlace }) {
   }, []);
 
   function savePlaceHandler() {
+    // check for empty user input
+
+    if (!enteredTitle && !selectedImage && !pickedLocation) {
+      Alert.alert(
+        "Invalid Input",
+        "Please enter a title, select an image, and pick a location.",
+        [{ text: "Okay" }]
+      );
+      return;
+    } else if (!enteredTitle) {
+      Alert.alert("Invalid Input", "Please enter a valid title.", [
+        { text: "Okay" },
+      ]);
+      return;
+    } else if (!selectedImage) {
+      Alert.alert("Invalid Input", "Please select an image.", [
+        { text: "Okay" },
+      ]);
+      return;
+    } else if (!pickedLocation) {
+      Alert.alert("Invalid Input", "Please pick a location.", [
+        { text: "Okay" },
+      ]);
+      return;
+    }
     const placeData = new Places(enteredTitle, selectedImage, pickedLocation);
     onCreatePlace(placeData);
   }
